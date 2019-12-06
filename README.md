@@ -1,2 +1,0 @@
-# Evoplan
-Aplicativo Evoplan
