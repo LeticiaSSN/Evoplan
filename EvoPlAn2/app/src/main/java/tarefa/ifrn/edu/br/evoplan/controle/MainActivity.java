@@ -32,6 +32,7 @@ import java.util.UUID;
 
 import tarefa.ifrn.edu.br.evoplan.R;
 import tarefa.ifrn.edu.br.evoplan.modelo.Planta;
+import tarefa.ifrn.edu.br.evoplan.modelo.Usuario;
 
 public class
 
@@ -45,7 +46,6 @@ MainActivity extends AppCompatActivity {
     public static int diferenca=0;
     public static int umidadeIdeal=0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,7 +57,6 @@ MainActivity extends AppCompatActivity {
         }
 
     }
-
 
     @Override
     public void onBackPressed() {
@@ -87,8 +86,6 @@ MainActivity extends AppCompatActivity {
 
     ThreadConnectBTdevice myThreadConnectBTdevice;
     ThreadConnected myThreadConnected;
-
-
 
     @Override
     protected void onDestroy() {
@@ -225,9 +222,6 @@ MainActivity extends AppCompatActivity {
                     final int umidadeAtualf=somenteDigitos(strReceived);
                     final int diferencaf =umidadeIdealf-umidadeAtualf;
 
-
-
-
                     runOnUiThread(new Runnable(){
 
                         @Override
@@ -244,8 +238,6 @@ MainActivity extends AppCompatActivity {
                                 grafico = (ImageView)findViewById(R.id.grafico);
                                 grafico.setImageResource(R.drawable.grafico_muito_umido);
                             }
-
-
                         }});
 
                 } catch (Exception e) {
@@ -357,9 +349,10 @@ MainActivity extends AppCompatActivity {
         setContentView(R.layout.tela_todas_especies);
         EditText plantas = (EditText) findViewById(R.id.listarPlantassss);
         Banco b = new Banco();
+        Planta p = new Planta();
 
         try {
-            ResultSet especies = b.getPlantas();
+            ResultSet especies = b.getPlantas(p);
             String texto = "";
             while (especies.next()) {
                 texto += especies.getString("nome") + "\n";
@@ -386,7 +379,8 @@ MainActivity extends AppCompatActivity {
 
         try {
             Banco b = new Banco();
-            ResultSet retorno = b.getPlantas(nomePlanta, cuidadoPlanta, cuidadoPoda, categoria, origemDaPlanta, umidadeIdeal);
+            Planta p = new Planta();
+            ResultSet retorno = b.getPlantas(p);
 
             while (retorno.next()) {
                 nome = retorno.getString("nome") + "\n";
@@ -446,7 +440,8 @@ MainActivity extends AppCompatActivity {
         else if (Senha.equals(ConfirmarSenha)) {
             try {
                 Banco b = new Banco();
-                b.inserirUsuario(Nome, Senha, Login);
+                Usuario u = new Usuario();
+                b.inserirUsuario (u);
                 Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
