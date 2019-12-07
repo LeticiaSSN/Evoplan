@@ -17,4 +17,52 @@ public class Planta {
         this.cuidadoDePoda = cuidadoDePoda;
         this.categoria = categoria;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getUmidadeIdeal() {
+        return umidadeIdeal;
+    }
+
+    public void setUmidadeIdeal(String umidadeIdeal) {
+        this.umidadeIdeal = umidadeIdeal;
+    }
+
+    public String getOrigemDaPlanta() {
+        return origemDaPlanta;
+    }
+
+    public void setOrigemDaPlanta(String origemDaPlanta) {
+        this.origemDaPlanta = origemDaPlanta;
+    }
+
+    public String getCuidadoDaPlanta() {
+        return cuidadoDaPlanta;
+    }
+
+    public void setCuidadoDaPlanta(String cuidadoDaPlanta) {
+        this.cuidadoDaPlanta = cuidadoDaPlanta;
+    }
+
+    public String getCuidadoDePoda() {
+        return cuidadoDePoda;
+    }
+
+    public void setCuidadoDePoda(String cuidadoDePoda) {
+        this.cuidadoDePoda = cuidadoDePoda;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 }
