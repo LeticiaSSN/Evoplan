@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import tarefa.ifrn.edu.br.evoplan.modelo.Planta;
+import tarefa.ifrn.edu.br.evoplan.modelo.Usuario;
 
 public class Banco{
 
@@ -34,15 +35,15 @@ public class Banco{
         stmt.executeUpdate("INSERT INTO planta (`nome`,`umidadeIdeal`, `origemDaPlanta`, `cuidadoDaPlanta`, `cuidadoDePoda`, `umidadeIdeal`, `categoria`) VALUES ('"+p.nome+"', '"+p.umidadeIdeal+"','"+p.origemDaPlanta+"', '"+p.cuidadoDaPlanta+"' ,'"+p.cuidadoDePoda+"' ,'"+ 1 +"', '"+p.categoria+"');");
     }
 
-    public void inserirUsuario(String nome, String senha, String login) throws SQLException { /*inserir usuario*/
-        stmt.executeUpdate("INSERT INTO usuario(`nome`,`senha`, `nivelDeAcesso`, `login`)  VALUES ('"+nome+"', '"+senha+"','"+ 1 +"', '"+login+"');");
+    public void inserirUsuario(Usuario u) throws SQLException { /*inserir usuario*/
+        stmt.executeUpdate("INSERT INTO usuario(`nome`,`senha`, `nivelDeAcesso`, `login`)  VALUES ('"+u.nome+"', '"+u.senha+"','"+ 1 +"', '"+u.login+"');");
     }
 
     public ResultSet getVerificarLogin(String login) throws SQLException { /*verificar login*/
         return stmt.executeQuery("SELECT senha FROM usuario WHERE login = '" + login + "' ");
     }
 
-    public ResultSet getPlantas() throws SQLException { //listar plantas
+    public ResultSet getPlantas(Planta p) throws SQLException { //listar plantas
         return stmt.executeQuery("select * from planta");
     }
 
