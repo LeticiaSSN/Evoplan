@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#7FFFD4"
+    android:backgroundTint="#7FFFD4"
+    android:layout_width="match_parent"
+    tools:context=".controle.MainActivity"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txCuidadoDaPlanta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/categoria"
+        android:layout_marginTop="178dp"
+        android:text="Cuidado da Planta"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <TextView
+        android:id="@+id/nomeDaPlant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/nome"
+        android:layout_marginTop="14dp"
+        android:text="@string/nome_da_planta"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <TextView
+        android:id="@+id/txOrigemDaPlanta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/txCuidadoDaPlanta"
+        android:layout_marginBottom="116dp"
+        android:text="Origem da Planta"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <TextView
+        android:id="@+id/tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/txCuidadoDaPlanta"
+        android:layout_marginBottom="204dp"
+        android:text="@string/categoria"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <TextView
+        android:id="@+id/umidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/cuidadoDaPlanta"
+        android:layout_below="@+id/nome"
+        android:layout_marginTop="18dp"
+        android:text="@string/umidade_ideal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <Button
+        android:id="@+id/btVoltar"
+        style="@android:style/Widget.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#008B8B"
+        android:onClick="menuPrincipal"
+        android:text="Voltar" />
+
+    <Button
+        android:id="@+id/btAdicionar"
+        style="@android:style/Widget.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="#008B8B"
+        android:onClick="cadastrarPlanta"
+        android:text="Adicionar Planta" />
+
+    <TextView
+        android:id="@+id/cuidadosDePoda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/txCuidadoDaPlanta"
+        android:layout_marginTop="260dp"
+        android:text="@string/cuidados_de_poda"
+        android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <EditText
+        android:id="@+id/nome"
+        android:layout_width="357dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/umidadeIdeal"
+        android:layout_below="@+id/nomeDaPlant"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/origemDaPlanta"
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txCuidadoDaPlanta"
+        android:layout_below="@+id/txOrigemDaPlanta"
+        android:layout_marginTop="-116dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/categoria"
+        android:layout_width="354dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tx"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-204dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/umidadeIdeal"
+        android:layout_width="357dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txCuidadoDaPlanta"
+        android:layout_below="@+id/umidade"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/cuidadoDePoda"
+        android:layout_width="357dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cuidadosDePoda"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/cuidadoDaPlanta"
+        android:layout_width="357dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txCuidadoDaPlanta"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+</RelativeLayout>

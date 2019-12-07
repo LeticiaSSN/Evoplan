@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#7FFFD4"
+    tools:context="tarefa.ifrn.edu.br.evoplan.Info"
+    android:backgroundTint="#7FFFD4">
+
+    <TextView
+        android:id="@+id/texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView4"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:text="O presente aplicativo android EvoPlAn Evolução das Plantas com Android foi desenvolvido por Ithaelly Medeiros, Joseany Freitas e Leticia Santos, alunas do Curso Técnico de Informática no Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte(IFRN) no Campus Santa Cruz. O aplicativo tem o intuito de levar para as pessoas uma forma mais dinâmica e prática de cuidados específicos que cada planta necessita como cuidados de poda o mesmo disponibiliza uma espécie de termômetro onde indica a hora de rega e a quantidade de água que a planta precisa, fazendo assim com que os cuidados com suas plantas aumentem e o desperdício de água diminua. É um prazer ter você como usuário!"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.IconMenu.Item"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#008B8B"
+        android:onClick="menuPrincipal"
+        android:text="@string/voltar"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="252dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        app:srcCompat="@drawable/meninas" />
+
+</RelativeLayout>

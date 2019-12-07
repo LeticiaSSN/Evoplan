@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    tools:context=".controle.MainActivity"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txInformacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btInformacoes"
+        android:layout_alignStart="@+id/txSuaPlanta"
+        android:layout_marginStart="-8dp"
+        android:layout_marginTop="1dp"
+        android:text="Informações"
+        android:textColor="#008B8B" />
+
+    <TextView
+    android:id="@+id/label_de_bem_vindo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="16dp"
+    android:text="Seja bem-vindo! "
+    android:textColor="#008B8B"
+    android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
+
+    <ImageButton
+        android:id="@+id/btPlanta"
+        android:layout_width="105dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/label_de_bem_vindo"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="56dp"
+        android:onClick="plantaDoUsuario"
+        app:srcCompat="@mipmap/plantas" />
+
+    <ImageButton
+        android:id="@+id/btAddPlanta"
+        android:layout_width="105dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/label_de_bem_vindo"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="235dp"
+        android:onClick="adicionarNovaEspecie"
+        app:srcCompat="@mipmap/addplanta" />
+
+    <ImageButton
+        android:id="@+id/btEspecies"
+        android:layout_width="105dp"
+        android:layout_height="110dp"
+        android:layout_alignStart="@+id/btAddPlanta"
+        android:layout_alignTop="@+id/btAddPlanta"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="220dp"
+        android:onClick="todasEspecies"
+        app:srcCompat="@mipmap/especies" />
+
+    <ImageButton
+        android:id="@+id/btInformacoes"
+        android:layout_width="105dp"
+        android:layout_height="110dp"
+        android:layout_alignStart="@+id/btPlanta"
+        android:layout_alignTop="@+id/btPlanta"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="220dp"
+        android:onClick="informacoes"
+        app:srcCompat="@mipmap/info" />
+
+    <TextView
+        android:id="@+id/txSuaPlanta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btPlanta"
+        android:layout_alignStart="@+id/btPlanta"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="0dp"
+        android:text="Sua planta"
+        android:textColor="#008B8B" />
+
+    <TextView
+        android:id="@+id/txNovaEspecie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btAddPlanta"
+        android:layout_alignStart="@+id/btAddPlanta"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="-3dp"
+        android:text="Nova espécie"
+        android:textColor="#008B8B" />
+
+    <TextView
+        android:id="@+id/txTodasPlantas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btEspecies"
+        android:layout_alignEnd="@+id/btEspecies"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="-3dp"
+        android:text="Todas as Plantas"
+        android:textColor="#008B8B" />
+
+</RelativeLayout>

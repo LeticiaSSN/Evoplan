@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">EvoPlAn</string>
+    <string name="textview">TextView</string>
+    <string name="todo">TODO</string>
+    <string name="sair">Sair</string>
+    <string name="voltar">Voltar</string>
+    <string name="o_presente_aplicativo_android_evoplan_evolu_o_das_plantas_com_android_foi_desenvolvido_por_ithaelly_dantas_joseany_freitas_e_leticia_santos_alunas_do_curso_t_cnico_de_inform_tica_no_instituto_federal_de_educa_o_ci_ncia_e_tecnologia_do_rio_grande_do_norte_ifrn_no_campus_santa_cruz_o_aplicativo_tem_o_intuito_de_levar_para_as_pessoas_uma_forma_mais_din_mica_e_pr_tica_de_cuidados_espec_ficos_que_cada_planta_necessita_como_cuidados_de_poda_o_mesmo_disponibiliza_uma_esp_cie_de_term_metro_onde_indica_a_hora_de_rega_e_a_quantidade_de_gua_que_a_planta_precisa_fazendo_assim_com_que_os_cuidados_com_s_plantas_aumente_e_o_desperd_cio_de_gua_diminu_a_um_prazer_ter_voc_como_usu_rio">O presente aplicativo Android EvoPlAn (evolução das plantas com Android) Foi desenvolvido por Ithaelly Dantas, Joseany Freitas e Leticia Santos, alunas do Curso Técnico de Informática no Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte (IFRN), no Campus Santa Cruz. O aplicativo tem o intuito de levar para as pessoas uma forma mais dinâmica e prática de cuidados específicos que cada planta necessita como cuidados de poda. O mesmo disponibiliza uma espécie de termômetro onde indica a hora de rega e a quantidade de água que a planta precisa. Fazendo assim com que os cuidados com às plantas aumente e o desperdício de água diminuía. É um prazer ter você como usuário!</string>
+    <string name="cuidados_da_planta">Cuidados da Planta:</string>
+    <string name="nome_da_planta">Nome da Planta:</string>
+    <string name="categoria">Categoria:</string>
+    <string name="umidade_ideal">Umidade Ideal:</string>
+    <string name="voltar2">VOLTAR</string>
+    <string name="cuidados_de_poda">Cuidados de poda:</string>
+    <string name="adicionar_planta">ADICIONAR PLANTA</string>
+    <string name="cuidado_da_planta">CUIDADO DA PLANTA:</string>
+    <string name="cuidado">cuidado</string>
+    <string name="voltar3">voltar3</string>
+    <string name="palmeira">Palmeira</string>
+</resources>
