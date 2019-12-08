@@ -20,7 +20,6 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -39,12 +38,26 @@ public class
 MainActivity extends AppCompatActivity {
 
     private String nomePlanta = "";
+
     public String login = "";
     public static String plantaSelecionada="";
     public static int umidadeAtuals=0;
     public static int umidadeAtual =0;
     public static int diferenca=0;
     public static int umidadeIdeal=0;
+
+    String Nome;
+    String CuidadoDaPlanta ;
+    String CuidadoDePoda;
+    String Categoria;
+    String OrigemDaPlanta;
+    String UmidadeIdeal;
+
+
+    Banco b = new Banco();
+    Usuario u = new Usuario();
+    Planta p = new Planta(Nome, UmidadeIdeal, OrigemDaPlanta, CuidadoDaPlanta, CuidadoDePoda, Categoria);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,12 +173,7 @@ MainActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
-                        //textStatus.setText(msgconnected);
-// descomentar e testa isso
-                        //listViewPairedDevice.setVisibility(View.GONE);
-                        //inputPane.setVisibility(View.VISIBLE);
                     }});
-
                 startThreadConnected(bluetoothSocket);
             }
         }
@@ -181,9 +189,7 @@ MainActivity extends AppCompatActivity {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
         }
-
     }
 
     private class ThreadConnected extends Thread {
@@ -200,10 +206,8 @@ MainActivity extends AppCompatActivity {
                 in = socket.getInputStream();
                 out = socket.getOutputStream();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
             connectedInputStream = in;
             connectedOutputStream = out;
         }
@@ -240,12 +244,9 @@ MainActivity extends AppCompatActivity {
                             }
                         }});
 
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
+                } catch (Exception e){
                     e.printStackTrace();
-                }
-            }
-        }
+                }}}
 
         public void write(byte[] buffer) {
             try {
@@ -266,7 +267,7 @@ MainActivity extends AppCompatActivity {
         }
     }
 
-    //funcao que converte o valor vindo do sensor de umidade
+    //funcao que converte o valor do sensor de umidade
     public static int somenteDigitos(String strReceived) {
         String digitos = "";
         char[] letras  = strReceived.toCharArray();
@@ -286,7 +287,6 @@ MainActivity extends AppCompatActivity {
             for (BluetoothDevice device : pairedDevices) {
                 pairedDeviceArrayList.add(device);
             }
-
             ///testa isso
             pairedDeviceAdapter = new ArrayAdapter<BluetoothDevice>(this,
                     android.R.layout.simple_list_item_1, pairedDeviceArrayList);
@@ -333,7 +333,6 @@ MainActivity extends AppCompatActivity {
     public void confirmarPlanta(View v) {
         plantaSelecionada=nomePlanta;
         setContentView(R.layout.tela_planta_do_usuario);
-
     }
 
     public void adicionarNovaEspecie(View v) { setContentView(R.layout.tela_adicionar_nova_especie);}
@@ -347,9 +346,13 @@ MainActivity extends AppCompatActivity {
     //TELA QUE MOSTRAR TODAS AS ESPECIES DE PLANTAS QUE EXISTEM
     public void todasEspecies(View v) {
         setContentView(R.layout.tela_todas_especies);
+        Nome = "";
+        CuidadoDaPlanta = "";
+        CuidadoDePoda = "";
+        Categoria = "";
+        OrigemDaPlanta = "";
+        UmidadeIdeal ="";
         EditText plantas = (EditText) findViewById(R.id.listarPlantassss);
-        Banco b = new Banco();
-        Planta p = new Planta();
 
         try {
             ResultSet especies = b.getPlantas(p);
@@ -366,56 +369,50 @@ MainActivity extends AppCompatActivity {
     // TELA TODAS AS ESPECIES, QUE APÓS SER ESCRITO ALGUMA DAS PLANTAS QUE POSSUI NO BD, VAI PARA A TELA MAIS INFORMAÇÕES SOBRE A PLANTA
     public void pesquisarPlanta(View v) {
         SearchView plantas = (SearchView) findViewById(R.id.pesquisarPlanta2222);
-
         nomePlanta = plantas.getQuery().toString();
-
         setContentView(R.layout.tela_mais_informacoes_sobre_a_planta);
-        String nome = "";
-        String cuidadoPlanta = "";
-        String cuidadoPoda = "";
-        String categoria = "";
-        String origemDaPlanta = "";
-        String umidadeIdeal ="";
+
+        Nome = "";
+        CuidadoDaPlanta = "";
+        CuidadoDePoda = "";
+        Categoria = "";
+        OrigemDaPlanta = "";
+        UmidadeIdeal ="";
 
         try {
-            Banco b = new Banco();
-            Planta p = new Planta();
             ResultSet retorno = b.getPlantas(p);
-
             while (retorno.next()) {
-                nome = retorno.getString("nome") + "\n";
-                cuidadoPlanta = retorno.getString("cuidadoDaPlanta") + "\n";
-                cuidadoPoda = retorno.getString("cuidadoDePoda") + "\n";
-                categoria = retorno.getString("categoria") + "\n";
-                origemDaPlanta = retorno.getString("origemDaPlanta") + "\n";
-                umidadeIdeal =retorno.getInt("umidadeIdeal") + "\n";
-
+                Nome = retorno.getString("nome") + "\n";
+                CuidadoDaPlanta = retorno.getString("cuidadoDaPlanta") + "\n";
+                CuidadoDePoda = retorno.getString("cuidadoDePoda") + "\n";
+                Categoria = retorno.getString("categoria") + "\n";
+                OrigemDaPlanta = retorno.getString("origemDaPlanta") + "\n";
+                UmidadeIdeal =retorno.getInt("umidadeIdeal") + "\n";
             }
 
             //titulo nome da planta
             TextView nomePlantaTela = (TextView) findViewById(R.id.nomePlanta);
-            nomePlantaTela.setText(nome);
+            nomePlantaTela.setText(Nome);
 
             //cuidado da planta
             TextView cuidadoDaPlanta = (TextView) findViewById(R.id.caixaTextoPlanta);
-            cuidadoDaPlanta.setText(cuidadoPlanta);
+            cuidadoDaPlanta.setText(CuidadoDaPlanta);
 
             //cuidado de poda
             TextView cuidadoDePoda = (TextView) findViewById(R.id.caixaTextoCuidados);
-            cuidadoDePoda.setText(cuidadoPoda);
+            cuidadoDePoda.setText(CuidadoDePoda);
 
             //categoria
             TextView categoria2 = (TextView) findViewById(R.id.caixaTextoCategoria);
-            categoria2.setText(categoria);
+            categoria2.setText(Categoria);
 
             //origem
             TextView origem = (TextView) findViewById(R.id.caixaTextoOrigem2);
-            origem.setText(origemDaPlanta);
+            origem.setText(OrigemDaPlanta);
 
             //umidade ideal
             TextView umidadeIdeal2 = (TextView) findViewById(R.id.caixaTextoUmidadeIdeal);
-            umidadeIdeal2.setText(umidadeIdeal);
-
+            umidadeIdeal2.setText(UmidadeIdeal);
 
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -439,8 +436,6 @@ MainActivity extends AppCompatActivity {
         }
         else if (Senha.equals(ConfirmarSenha)) {
             try {
-                Banco b = new Banco();
-                Usuario u = new Usuario();
                 b.inserirUsuario (u);
                 Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
@@ -457,12 +452,10 @@ MainActivity extends AppCompatActivity {
     public void temCadastro(View v) {
         EditText login = (EditText) findViewById(R.id.Login);
         EditText confirmarSenha = (EditText) findViewById(R.id.confirmar_senha);
-        Banco b = new Banco();
         String senhaDB = "vazio";
 
         String Login = login.getText().toString();
         String ConfirmarSenha = confirmarSenha.getText().toString();
-
 
         try {
             ResultSet resultado = b.getVerificarLogin(Login);
@@ -474,7 +467,6 @@ MainActivity extends AppCompatActivity {
                 setContentView(R.layout.tela_menu_principal);
             } else {
                 Toast.makeText(getApplicationContext(), "Login e/ou senha incorreta.", Toast.LENGTH_LONG).show();
-
             }
 
         } catch (Exception e) {
@@ -500,18 +492,13 @@ MainActivity extends AppCompatActivity {
         String Categoria = categoria.getText().toString();
 
         try {
-            Banco b = new Banco();
             if (Nome.equals("") || UmidadeIdeal.equals("") || OrigemDaPlanta.equals(" ") || CuidadoDaPlanta.equals(" ") || CuidadoDePoda.equals(" ")|| Categoria.equals(" ")){
                 Toast.makeText(getApplicationContext(), "É necessário preencher todos os campos. ", Toast.LENGTH_LONG).show();
             }
             else{
-                Planta p = new Planta(Nome, UmidadeIdeal, OrigemDaPlanta, CuidadoDaPlanta, CuidadoDePoda, Categoria);
                 b.inserirPlanta(p);
                 Toast.makeText(getApplicationContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
             }
-
-
-
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
             e.printStackTrace();
@@ -521,14 +508,12 @@ MainActivity extends AppCompatActivity {
     // TELA PLANTA DO USUARIO QUE FAZ CONEXÃO COM O MÓDULO BLUETOOTH
     public void chamarBlue(View v) throws SQLException{
         int umidade =0;
-        Banco b = new Banco();
         ResultSet rs = b.getBuscarUmidadeIdeal(plantaSelecionada);
         while (rs.next()){
             umidade = Integer.parseInt(rs.getString("umidadeIdeal"));
         }
         Toast.makeText(this,
-                "Umidade "+umidade,
-                Toast.LENGTH_LONG).show();
+                "Umidade "+umidade,Toast.LENGTH_LONG).show();
 
         umidadeIdeal= umidade;
 
@@ -546,7 +531,6 @@ MainActivity extends AppCompatActivity {
                 if (myThreadConnected != null) {
                     byte[] bytesToSend = inputField.getText().toString().getBytes();
                     myThreadConnected.write(bytesToSend);
-
                 }
             }
         });
@@ -558,9 +542,7 @@ MainActivity extends AppCompatActivity {
             finish();
             return;
         }
-
         myUUID = UUID.fromString(UUID_STRING_WELL_KNOWN_SPP);
-
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
             Toast.makeText(this,
@@ -570,8 +552,7 @@ MainActivity extends AppCompatActivity {
             return;
         }
 
-        String stInfo = bluetoothAdapter.getName() + "\n" +
-                bluetoothAdapter.getAddress();
+        String stInfo = bluetoothAdapter.getName() + "\n" +bluetoothAdapter.getAddress();
         textInfo.setText(stInfo);
         setup();
     }
