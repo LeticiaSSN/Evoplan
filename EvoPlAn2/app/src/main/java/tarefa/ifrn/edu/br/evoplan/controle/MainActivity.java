@@ -57,7 +57,7 @@ MainActivity extends AppCompatActivity {
     Banco b = new Banco();
     Usuario u = new Usuario();
     Planta p = new Planta(Nome, UmidadeIdeal, OrigemDaPlanta, CuidadoDaPlanta, CuidadoDePoda, Categoria);
-
+    Usuario new = new Usuario (nome, senha, login);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
