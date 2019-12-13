@@ -46,6 +46,10 @@ MainActivity extends AppCompatActivity {
     public static int diferenca=0;
     public static int umidadeIdeal=0;
 
+    String Nome2;
+    String Senha;
+    String Login;
+
     String Nome;
     String CuidadoDaPlanta ;
     String CuidadoDePoda;
@@ -55,9 +59,9 @@ MainActivity extends AppCompatActivity {
 
 
     Banco b = new Banco();
-    Usuario u = new Usuario();
+    Usuario usuario = new Usuario();
     Planta p = new Planta(Nome, UmidadeIdeal, OrigemDaPlanta, CuidadoDaPlanta, CuidadoDePoda, Categoria);
-    Usuario new = new Usuario (nome, senha, login);
+    Usuario u = new Usuario (Nome2, Senha, Login);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +77,7 @@ MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-       Intent intent = new Intent(MainActivity.this,MainActivity.class);
+        Intent intent = new Intent(MainActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
 
@@ -458,12 +462,12 @@ MainActivity extends AppCompatActivity {
         String ConfirmarSenha = confirmarSenha.getText().toString();
 
         try {
-            ResultSet resultado = b.getVerificarLogin(Login);
+            ResultSet resultado = b.getVerificarLogin(u);
             while (resultado.next()) {
                 senhaDB = resultado.getString("senha");
             }
             if (senhaDB.equals(ConfirmarSenha)) {
-                this.login = Login;
+                this.login = u.login;
                 setContentView(R.layout.tela_menu_principal);
             } else {
                 Toast.makeText(getApplicationContext(), "Login e/ou senha incorreta.", Toast.LENGTH_LONG).show();
