@@ -39,20 +39,20 @@ public class Banco{
         stmt.executeUpdate("INSERT INTO usuario(`nome`,`senha`, `nivelDeAcesso`, `login`)  VALUES ('"+u.nome+"', '"+u.senha+"','"+ 1 +"', '"+u.login+"');");
     }
 
-    public ResultSet getVerificarLogin(String login) throws SQLException { /*verificar login*/
-        return stmt.executeQuery("SELECT senha FROM usuario WHERE login = '" + login + "' ");
+    public ResultSet getVerificarLogin(Usuario u) throws SQLException { /*verificar login*/
+        return stmt.executeQuery("SELECT senha FROM usuario WHERE login = '" + u.login + "' ");
     }
 
     public ResultSet getPlantas(Planta p) throws SQLException { //listar plantas
         return stmt.executeQuery("select * from planta");
     }
 
-    public ResultSet getSenha(String senha) throws SQLException { //listar plantas
-        return stmt.executeQuery("select senha from usuario WHERE senha = '" +senha+"'");
+    public ResultSet getSenha(Usuario u) throws SQLException { //listar plantas
+        return stmt.executeQuery("select senha from usuario WHERE senha = '" +u.senha+"'");
     }
 
-    public ResultSet getUsuario(String login) throws SQLException { //listar plantas
-        return stmt.executeQuery("select * from usuario WHERE login = '" +login+"'");
+    public ResultSet getUsuario(Usuario u) throws SQLException { //listar plantas
+        return stmt.executeQuery("select * from usuario WHERE login = '" +u.login+"'");
     }
 
     public ResultSet getPlantas(String nome, String cuidadoDaPlanta, String cuidadoDePoda, String categoria, String origemDaPlanta, String umidadeIdeal) throws SQLException { //listar plantas
@@ -74,10 +74,5 @@ public class Banco{
     public ResultSet getBuscarUmidadeIdeal(String plantaSeleciona) throws SQLException { //buscar umidade ideal
         return stmt.executeQuery("select umidadeIdeal from planta where nome ='"+plantaSeleciona+"'");
     }
-
-    /*usando para imagem
-    public ResultSet getPlantas(String nome, String cuidadoDaPlanta, String cuidadoDePoda, int id) throws SQLException { //listar plantas
-        return stmt.executeQuery("select nome, cuidadoDaPlanta, cuidadoDePoda from planta where id='" + id + "'");
-    }*/
 
 }
